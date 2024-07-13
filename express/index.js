@@ -1,5 +1,5 @@
 const express = require("express")
-
+const zod = require("zod")
 const app = express()
 
 //basic route 
@@ -63,6 +63,21 @@ app.get("/middleware-example/:id",sampleMiddleware, (req,res)=> {
 })
 
 
+//ZOD Input validation
+
+const schema = zod.array(zod.number()) //schema for array of numbers [1,2,3,4]
+const schema1 = zod.object({
+    email : zod.string(),
+    password : zod.string().min(8),
+    country : zod.literal("US").or(zod.literal("UK")) //literal means exact string
+})
+app.post("/zod",(req,res)=>{
+    const payload = req.body 
+    const response = schema.safeParse(payload.numArr) // safeParse won't throw error just give sucess false, parse() will throw error 
+    res.json({response})    
+})
+
+
 //global catches 
 //Need to define last, and app.use means it will be called all routes
 app.use(function(err,req,res,next){
@@ -70,4 +85,5 @@ app.use(function(err,req,res,next){
         msg: "something went wrong"
     })
 })
+
 app.listen(1100)
