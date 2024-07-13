@@ -1,0 +1,79 @@
+FLEX: 
+
+Thre divs if you have, it will be in three row 
+--
+--
+--
+
+If you want them in one line you just have to add flex 
+
+-- -- --
+display:flex and justify-content:center 
+
+
+In Tailwind : 
+
+className = "flex justify-center"
+
+
+GRID 
+
+Another way to achive -- -- -- this is using GRID 
+
+className = "gril grid-cols-3" // this will give equal width to three columns
+
+un even width distributions looks something like this : 
+
+<div className="grid grid-cols-12">
+    <div className="col-span-5"></div>   // This guy will take 5 column space 
+    <div className="col-span-5"></div>   // This guy will take 5 column space 
+    <div className="col-span-2"></div>   // This guy will take 2 column space 
+</div>
+
+
+RESPONSIVENESS
+
+For example when width is smaller you need grid-cols-3 when it becomes smaller you need grid-cols-2 more smaller you need grid-cols-1
+
+
+Five Breakpoint Prefix : 
+sm  640px  @media(min-width:640px) { ... } 
+md  768px  
+lg  1024px   
+xl  1280px 
+2xl 1536px   
+
+It is mobile first 
+
+WRONG : 
+<div class="sm:text-center"> this is text which should be centered in mobile screen </div>
+
+RIGHT : 
+<div class="text-center sm:text-left"> this is text which should be centered in mobile screen </div>
+By default text-center, when screen bigger than sm than text-left 
+
+Every color has 50-950 shade 
+bg-green-500 for example 
+text-red-650
+
+Font sizes : 
+text-xs => 12px
+text-sm => 14px
+text-base => 16px
+text-lg
+text-xl 
+... like this there are more as well 
+
+
+Border Radious : 
+
+rounded-s-md 
+rounded-s-lg
+rounded-s-xl 
+rounded-s-2xl
+...there are more as well 
+
+rounded-full, rounded-lg, rounded-md, rounded 
+
+
+
