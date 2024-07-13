@@ -43,4 +43,23 @@ app.delete("/delete/:id",(req,res) => {
     })
 })
 
+//middleware 
+
+const sampleMiddleware = (req,res,next) => {
+    console.log(req.parmas)
+    const id = req.params.id
+    if(id !== "1"){ 
+        res.status(403).json({
+            success : false,
+            message : "Invalid Id"
+        })
+    } else {
+        next()
+    }
+}
+
+app.get("/middleware-example/:id",sampleMiddleware, (req,res)=> {
+    res.send("The middleware works correctly")
+})
+
 app.listen(1100)
