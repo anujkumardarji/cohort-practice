@@ -62,4 +62,12 @@ app.get("/middleware-example/:id",sampleMiddleware, (req,res)=> {
     res.send("The middleware works correctly")
 })
 
+
+//global catches 
+//Need to define last, and app.use means it will be called all routes
+app.use(function(err,req,res,next){
+    res.json({
+        msg: "something went wrong"
+    })
+})
 app.listen(1100)
